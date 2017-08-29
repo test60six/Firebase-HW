@@ -21,18 +21,24 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Current Train Schedule</h3>
                     </div>
-                    <div class="panel-body" id="info">
-                        Panel content
-                    </div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequncy (min)</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td id="info"></td>
+                            <td id="info1"></td>
+                            <td id="info2"></td>
+                            <td id="info3"></td>
+                            <td id="info4"></td>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -51,19 +57,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Destination</label>
+                                <label for="input" class="col-sm-2 control-label">Destination</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="destination" placeholder="Destination">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">First Train Time </label>
+                                <label for="input" class="col-sm-2 control-label">First Train Time </label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="firstrain" placeholder="(HH:mm Military Time)">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Frequency</label>
+                                <label for="input" class="col-sm-2 control-label">Frequency</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="frequency" placeholder="(minutes)">
                                 </div>
@@ -87,89 +93,12 @@
                 <img src="assets/images/bubbles.jpg" alt="bubbles" style="width:300px;height:300px;">
             </div>
         </div>
-
         <footer></footer>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-        <script>
-        // Initialize Firebase
-        var config = {
-            
-                apiKey: "AIzaSyDnBc-baHcd1rtWUlVTNjV_cLWlc96hJKo",
-                authDomain: "train-schedule-6f73b.firebaseapp.com",
-                databaseURL: "https://train-schedule-6f73b.firebaseio.com",
-                projectId: "train-schedule-6f73b",
-                storageBucket: "train-schedule-6f73b.appspot.com",
-                messagingSenderId: "70716159898"
-            };
-        
-        firebase.initializeApp(config);
-
-
-        // Create a variable to reference the database.
-        var database = firebase.database();
-        // Initial Values
-        var trainName = "";
-        var Destination = "";
-        var firstTrain = "";
-        var Frequency = "";
-
-        function createTable() {
-            var row = $("<tr>");
-            var data = $("<td>");
-            data.text("hi");
-            row.append(data);
-            $("#info").append(row);
-
-
-
-        }
-
-
-
-        // Capture Button Click
-        $("#submit").on("click", function(event) {
-            event.preventDefault();
-            // Grabbed values from text boxes
-            name = $("#name").val().trim();
-            destination = $("#destination").val().trim();
-            firstTrainTime = $("#firstrain").val().trim();
-            Frequency = $("#frequency").val().trim();
-
-            console.log("I got " + name + ", " + destination + ", " + firstTrainTime + ", " + Frequency);
-            // Code for handling the push
-            database.ref().push({
-                name: name,
-                destination: Destination,
-                firstTrainTime: firstrain,
-                Frequency: Frequency,
-                dateAdded: firebase.database.ServerValue.TIMESTAMP
-
-
-
-            });
-        });
-        // Firebase watcher + initial loader + order/limit HINT: .on("child_added"
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-            // storing the snapshot.val() in a variable for convenience
-            var sv = snapshot.val();
-            // Console.loging the last user's data
-            console.log(sv.trainName);
-            console.log(sv.Destination);
-            console.log(sv.firstTrain);
-            console.log(sv.Frequency);
-            // Change the HTML to reflect
-            $("#name").html(sv.name);
-            $("#destination").html(sv.Destination);
-            $("#firstrain").html(sv.firstrain);
-            $("#frequency").html(sv.frequency);
-            // Handle the errors
-        }, function(errorObject) {
-            console.log("Errors handled: " + errorObject.code);
-
-        });
-        </script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
