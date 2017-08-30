@@ -1,23 +1,22 @@
-.jumbotron{
-	height:350px;
-	background-image: url("../images/edit.jpeg");
-	background-size:100% 100%;
-	margin-top: 10px;
-	color:green;
-	text-align: center;
-	
-}
-body{
-	background-color: #422836;
-background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
- 
+.jumbotron {
+    height: 350px;
+    background-image: url("../images/edit.jpeg");
+    background-size: 100% 100%;
+    margin-top: 10px;
+    text-align: center;
 }
 
-.panel > .panel-heading{
-	margin:0 auto;
-	background-color: #919096;
-	color:black;
+body {
+    background-color: #422836;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
-footer{
-	margin-bottom: 20px;
+
+.panel>.panel-heading {
+    margin: 0 auto;
+    background-color: #919096;
+    color: black;
+}
+
+footer {
+    margin-bottom: 20px;
 }
